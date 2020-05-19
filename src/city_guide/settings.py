@@ -25,7 +25,7 @@ SECRET_KEY = '^8(r--9vnt8q5otkqca2utb8@e1)&l_$l50ok4cqfzaf-f*hst'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cityguide.pythonanywhere.com']
 
 
 # Application definition
@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'category',
     'accounts',
     'comments',
-    'plan'
+    'plan',
+    'corsheaders'
 ]
 SITE_ID = 1
 
@@ -63,7 +64,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'city_guide.urls'
 
@@ -119,13 +123,14 @@ AUTH_USER_MODEL = 'accounts.User'
 REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
        'rest_framework.authentication.TokenAuthentication',
+       'rest_framework.authentication.BasicAuthentication',
    ),
    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAdminUser'
+        'rest_framework.permissions.IsAdminUser',
    ),
 }
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'accounts.api.serializers._UserDetailSerializer'
+    'USER_DETAILS_SERIALIZER': 'accounts.api.serializers._UserDetailSerializer',
 }
 
 # Internationalization
