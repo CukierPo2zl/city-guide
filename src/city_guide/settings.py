@@ -46,13 +46,15 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'allauth.socialaccount',
+
     # apps
     'attraction',
     'category',
     'accounts',
     'comments',
     'plan',
-    'corsheaders'
+    'city',
+    'corsheaders',
 ]
 SITE_ID = 1
 
