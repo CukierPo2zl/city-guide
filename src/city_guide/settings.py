@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['cityguide.pythonanywhere.com']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'allauth.socialaccount',
+    # thrid party
 
     # apps
     'attraction',
@@ -56,6 +58,9 @@ INSTALLED_APPS = [
     'city',
     'corsheaders',
 ]
+
+
+
 SITE_ID = 1
 
 MIDDLEWARE = [
@@ -69,7 +74,11 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'https://city-guide-2902e.web.app/',
+    'http://localhost:4200'
+]
 
 ROOT_URLCONF = 'city_guide.urls'
 

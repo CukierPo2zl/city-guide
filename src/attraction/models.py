@@ -2,22 +2,24 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from comments.models import Comment
 from category.models import Category
+from city.models import City
 
 class Attraction(models.Model):
     name        = models.CharField(max_length=50)
-    description = models.TextField(max_length=255)
-    city        = models.CharField(max_length=50)
+    description = models.TextField(max_length=255, null=True)
+
+    city        = models.ForeignKey(City, on_delete=models.CASCADE)
     rate        = models.PositiveIntegerField()
     price       = models.PositiveIntegerField()
-    category    = models.OneToOneField(Category, on_delete=models.CASCADE)
-    
+    category    = models.ForeignKey(Category, on_delete=models.CASCADE)
+
     latitude    = models.IntegerField()
     longitude   = models.IntegerField()
 
     start_h     = models.TimeField()
     end_h       = models.TimeField()
 
-    
+
 
     def __str__(self):
         return self.name
