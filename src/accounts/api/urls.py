@@ -1,6 +1,7 @@
 from django.urls import path, include, re_path
 from rest_framework import routers
-from .views import UserViewSet
+from .views import UserViewSet, EditView
+#from accounts import views
 from rest_auth.registration.views import VerifyEmailView, RegisterView
 
 router = routers.DefaultRouter()
@@ -11,4 +12,5 @@ urlpatterns = [
     path('auth/', include('rest_auth.urls')),
     path('auth/register', include('rest_auth.registration.urls')),
     path('accounts/', include('allauth.urls')),
+    path('update/<pk>/', EditView.as_view()),
 ]

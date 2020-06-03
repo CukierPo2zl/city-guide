@@ -14,6 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = "/media/"
 
 
 # Quick-start development settings - unsuitable for production
@@ -74,10 +77,12 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    'https://city-guide-2902e.web.app/',
-    'http://localhost:4200'
+'https://city-guide-2902e.web.app/',
+    'http://localhost:4200',
+    'http://169.254.105.139:4200'
+
 ]
 
 ROOT_URLCONF = 'city_guide.urls'
@@ -85,7 +90,7 @@ ROOT_URLCONF = 'city_guide.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -167,7 +172,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'projektcityguide@gmail.com'
-EMAIL_HOST_PASSWORD = 'P@ssw0rd*123'
+EMAIL_HOST_PASSWORD = 'p@SSW0RD123*'
 
 AUTHENTICATION_BACKENDS = (
     # default

@@ -14,6 +14,7 @@ class AttractionSerializer(serializers.ModelSerializer):
             'pk',
             'name',
             'description',
+            'picture',
             'city',
             'rate',
             'price',

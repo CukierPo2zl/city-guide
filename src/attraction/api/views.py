@@ -55,7 +55,7 @@ class TrendingAttractions(generics.ListAPIView):
 
     def get_queryset(self):
         qs = Attraction.objects.all()
-        return qs[0:3]
+        return qs[0:5]
 
 
 
