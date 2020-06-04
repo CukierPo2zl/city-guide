@@ -83,8 +83,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
 'https://city-guide-2902e.web.app/',
     'http://localhost:4200',
-    'http://169.254.105.139:4200'
-
 ]
 
 ROOT_URLCONF = 'city_guide.urls'
