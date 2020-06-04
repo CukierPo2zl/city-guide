@@ -3,7 +3,7 @@ from rest_framework.permissions import AllowAny
 from accounts.models import User
 from rest_framework.response import Response
 from django.http.response import JsonResponse
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser, MultiPartParser
 from accounts.api.serializers import UserSerializer, _UserDetailSerializer
 from .permissions import IsLoggedInUserOrAdmin, IsAdminUser
 from rest_framework.decorators import api_view
@@ -28,6 +28,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class EditView(generics.RetrieveUpdateDestroyAPIView):
    lookup_field = 'pk'
    serializer_class = _UserDetailSerializer
+   parser_classes = [MultiPartParser]
 
    def get_queryset(self):
        return User.objects.all()

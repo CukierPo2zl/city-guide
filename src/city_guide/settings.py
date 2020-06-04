@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_auth.registration',
     'allauth.socialaccount',
-    # thrid party
 
     # apps
     'attraction',
@@ -59,7 +58,10 @@ INSTALLED_APPS = [
     'comments',
     'plan',
     'city',
+    'ordered_attraction',
+
     'corsheaders',
+
 ]
 
 

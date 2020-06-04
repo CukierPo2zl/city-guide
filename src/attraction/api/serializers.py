@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from attraction.models import Attraction
-from django.conf import settings
 from city.api.serializers import CitySerializer
 from category.api.serializers import CategorySerializer
 
