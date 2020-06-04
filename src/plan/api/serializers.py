@@ -40,6 +40,7 @@ class PlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plan
         fields = [
+            'pk',
             'owner',
             'route',
             'route_length'

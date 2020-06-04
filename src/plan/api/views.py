@@ -1,13 +1,10 @@
-from django.db.models import Q
-from rest_framework.views import APIView
 from plan.models import Plan
-from attraction.models import Attraction
 from .serializers import PlanSerializer, CreatePlanSerializer
-from django.contrib.auth.models import User
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework import generics, mixins
+from django.http.response import JsonResponse
+from rest_framework.decorators import api_view
 
 
 
@@ -36,3 +33,13 @@ class PlanListView(generics.ListAPIView):
         qs = Plan.objects.filter(owner=self.request.user)
         return qs
 
+@api_view(['DELETE'])
+def plan_delete(request, pk):
+    try:
+        plan = Plan.objects.get(pk=pk)
+    except Plan.DoesNotExist:
+        return JsonResponse({'message': 'The plan does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+        plan.delete()
+        return JsonResponse({'message': 'Plan was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
